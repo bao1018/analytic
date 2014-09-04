@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Cool Navitaion</title>
+	<style type="text/css">
+		ul, li {
+			list-style: none;
+		}
+		ul li a {
+			text-decoration: none;
+			color: #000;
+		}
+	</style>
+</head>
+<body>
+	<!-- 
+		构建简单的数据和其他形式实现切换逻辑  1
+	    研究d3做轮子切换的技术点 1
+	    实现 2
+    --> 
+	<div id="container">
+	    <ul>
+	    	<li>
+	    		<a href="#" id="1">- 1</a>
+	    	</li>
+	    	<li>
+	    		<a href="#" id="2">- 2</a>
+	    	</li><li>
+	    		<a href="#" id="3">- 3</a>
+	    	</li>
+	    </ul>
+	</div>
+	<script type="text/javascript" src="js/lib/jquery.min.js"></script>
+	<script type="text/javascript">
+		$('body').on('click', '#container>ul>li a', function() {
+			var $li = $(event.target).parent('li');
+			var id = event.target.id;
+			var cr =look4Cr(id);
+			var c = null;
+			var $ul = $li.append('<ul></ul>').find('ul');
+
+			for (var i = 0; i < cr.length; i++) {
+				c = cr[i];
+				$ul.append('<li>' + c["id"] + '</li>');
+			};
+			console.log(cr);
+		}); 
+		var look4Cr =  function(id) {
+			var cr = [];
+			for (var i = 0; i < datas.length; i++) {
+				if(datas[i]["id"] == id) {
+					cr = datas[i]["cr"];
+				}
+			};
+			return cr;
+		};
+		var datas = [
+			{
+				"id": 1,
+				"cr": [
+					{"id": 11},
+					{"id": 12},
+					{"id": 13}
+				]
+			},
+			{
+				"id": 2,
+				"cr": [
+					{"id": 21},
+					{"id": 22},
+					{"id": 23}
+				]
+			},
+			{
+				"id": 3,
+				"cr": [
+					{"id": 31},
+					{"id": 32},
+					{"id": 33}
+				]
+			},
+		];
+	</script>
+</body>
+</html>
